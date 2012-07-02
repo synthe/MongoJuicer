@@ -1,4 +1,3 @@
-
 import sublime, sublime_plugin
 import json
 
@@ -42,10 +41,10 @@ class ExampleCommand(sublime_plugin.TextCommand):
 class MongoJuicerListener(sublime_plugin.EventListener):
 	def on_close(self, view):
 		global MongoViews
-		if ( view.is_scratch() and view.id() in MongoViews ):
+		if view.is_scratch() and view.id() in MongoViews:
 			print 'view just closed was a mongo juice'
 			answer = sublime.ok_cancel_dialog("Update Values?")
-			if (answer):
+			if answer:
 				print "would be saving to mongo right here"
 				print view.substr(sublime.Region(0, view.size()))
 		# print view.isMongoJuice, ' mj?'
